@@ -9,11 +9,16 @@ RUN apt-get update && apt-get install -y \
     php-mysqli \
     && rm -rf /var/lib/apt/lists/*
 
-COPY . /var/www/html/
+# Remove default Apache page FIRST
 RUN rm -f /var/www/html/index.html
 
-RUN chown -R www-data:www-data /var/www/html \
-    && a2enmod php8.1 || true
+# Copy your project files
+COPY . /var/www/html/
+
+RUN chown -R www-data:www-data /var/www/html
+
+# Set index.php as default page
+RUN echo "DirectoryIndex index.php index.html" > /etc/apache2/mods-enabled/dir.conf
 
 ENV APACHE_RUN_USER=www-data
 ENV APACHE_RUN_GROUP=www-data
