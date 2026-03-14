@@ -3,7 +3,8 @@ session_start();
 
 
 include("db_connection.php");
-error_reporting(0);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 if (isset($_SESSION["email"])) {
     
     $email_h = $_SESSION['email'];
