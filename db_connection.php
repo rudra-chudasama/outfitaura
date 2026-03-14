@@ -2,7 +2,7 @@
 $host = getenv('MYSQLHOST');
 $user = getenv('MYSQLUSER');
 $pass = getenv('MYSQLPASSWORD');
-$db   = getenv('MYSQLDATABASE');
+$db   = getenv('MYSQL_DATABASE');
 $port = (int)getenv('MYSQLPORT');
 
 if(empty($host)) {
