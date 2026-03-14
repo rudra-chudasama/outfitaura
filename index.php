@@ -1,20 +1,23 @@
 <?php 
+echo "STEP 1: PHP works<br>";
 session_start();
-
+echo "STEP 2: Session started<br>";
 
 include("db_connection.php");
+echo "STEP 3: DB included<br>";
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-if (isset($_SESSION["email"])) {
-    
-    $email_h = $_SESSION['email'];
-    $select_hreader = "SELECT * FROM `users` WHERE `email` ='$email_h'";
-    $result_header = mysqli_query($conn, $select_hreader);  
 
-    if (mysqli_num_rows($result_header) > 0) {
-        $userrow = mysqli_fetch_assoc($result_header);
-    }
+echo "STEP 4: Host=" . getenv('MYSQLHOST') . "<br>";
+echo "STEP 5: DB=" . getenv('MYSQLDATABASE') . "<br>";
+
+if(isset($conn) && $conn) {
+    echo "STEP 6: DB Connected!<br>";
+} else {
+    echo "STEP 6: DB FAILED - " . mysqli_connect_error() . "<br>";
 }
+exit;
 ?>
 <!DOCTYPE html>
 <html lang="en">
