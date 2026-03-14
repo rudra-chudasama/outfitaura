@@ -8,7 +8,7 @@ if (isset($_SESSION["email"])) {
     
     $email_h = $_SESSION['email'];
     $select_hreader = "SELECT * FROM `users` WHERE `email` ='$email_h'";
-    $result_header = mysqli_query($cost, $select_hreader);  
+    $result_header = mysqli_query($conn, $select_hreader);  
 
     if (mysqli_num_rows($result_header) > 0) {
         $userrow = mysqli_fetch_assoc($result_header);
